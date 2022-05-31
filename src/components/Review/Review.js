@@ -26,13 +26,16 @@ const Review = () => {
       useEffect(()=>{
             const saveCart = getDatabaseCart()
             const productKeys = Object.keys(saveCart)
-            const cartProducts = productKeys.map(key =>{
-                  const products = fakeData.find(pd => pd.key === key)
-                  products.quantity = saveCart[key]
-                  return products
-            },[])
-            setCart(cartProducts)
-            // console.log(cartProducts);
+
+            fetch('http://localhost:5000/productsByKey',{
+                  method : 'POST',
+                  headers :{
+                        'Content-Type':'application/json'
+                  },
+                  body: JSON.stringify(productKeys) 
+            })
+            .then(res => res.json())
+            .then(data => setCart(data))
       },[])
       return (
             <div className='shop-container'>
