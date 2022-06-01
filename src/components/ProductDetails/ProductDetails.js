@@ -6,7 +6,7 @@ const ProductDetails = () => {
       const {pdkey} = useParams()
       const [product, setProduct] = useState({})
       useEffect(()=>{
-            fetch('http://localhost:5000/product/'+pdkey)
+            fetch('https://frozen-refuge-86407.herokuapp.com/product/'+pdkey)
             .then(res => res.json())
             .then(data => setProduct(data))
       },[])

@@ -10,7 +10,7 @@ const Shipment = () => {
       const onSubmit = data => {
         const savedcart = getDatabaseCart()
         const orderDetails = {...loggedInUser,products : savedcart, shipment : data,orderTime: new Date()}
-        fetch('http://localhost:5000/addOrder',{
+        fetch('https://frozen-refuge-86407.herokuapp.com/addOrder',{
           method : 'POST',
           headers :{
             'Content-Type' : 'application/json'
